@@ -12,11 +12,22 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  def edit
+    @course = Course.find(params[:id])
+  end
+
   def create
     @course = Course.new(course_params)
 
     @course.save
     redirect_to @course
+  end
+
+  def update
+    @course = Course.find(params[:id])
+    if @course.update(course_params)
+      redirect_to @course
+    end
   end
 
   private
