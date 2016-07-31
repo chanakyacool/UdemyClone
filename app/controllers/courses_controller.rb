@@ -19,14 +19,19 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
 
-    @course.save
-    redirect_to @course
+    if @course.save
+      redirect_to @course
+    else
+      render 'new'
+    end
   end
 
   def update
     @course = Course.find(params[:id])
     if @course.update(course_params)
       redirect_to @course
+    else
+      render 'edit'
     end
   end
 
