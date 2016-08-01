@@ -4,4 +4,6 @@ class Course < ApplicationRecord
                     length: { minimum: 6 }
 
   mount_uploader :image, ImageUploader
+
+
 end

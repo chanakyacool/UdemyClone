@@ -1,4 +1,7 @@
-<%= image_tag @course.image_url(:full).to_s %>
+<%#= image_tag @course.image_url(:full).to_s %>
+<% if @course.youtube_url != nil %>
+  <%= embed(@course.youtube_url) %>
+<% end %>
 
 <p>
   <strong>Title:</strong>
