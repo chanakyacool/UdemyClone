@@ -30,7 +30,8 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id])
-    if @course.update(course_params)
+    if current_user == @course.user
+      @course.update(course_params)
       redirect_to @course
     else
       render 'edit'
@@ -39,7 +40,9 @@ class CoursesController < ApplicationController
 
   def destroy
     @course = Course.find(params[:id])
-    @course.destroy
+    if current_user == @course.user
+      @course.destroy
+    end
 
     redirect_to courses_path
   end
