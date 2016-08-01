@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @courses = Course.all
@@ -17,7 +18,8 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(course_params)
+    @user = current_user
+    @course = @user.courses.create(course_params)
 
     if @course.save
       redirect_to @course
