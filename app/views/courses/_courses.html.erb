@@ -1,21 +1,18 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-  </tr>
 
-  <% @courses.each do |course| %>
-    <tr>
-      <td><%= image_tag course.image_url(:thumb).to_s %></td>
-      <td><%= course.title %></td>
-      <td><%= course.description %></td>
-      <td><%= link_to 'View Details', course_path(course), class: "btn btn-link" %></td>
-      <% if current_user == course.user %>
-        <td><%= link_to 'Edit', edit_course_path(course), class: "btn btn-link" %></td>
-        <td><%= link_to 'Delete', course_path(course),
-                method: :delete,
-                data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<% @courses.each do |course| %>
+  <div class="col-md-4 column">
+    <%= image_tag course.image_url(:thumb).to_s %><br />
+    <%= course.title %><br />
+    <%#= course.description %>
+    <%= link_to 'View Details', course_path(course), class: "btn btn-link" %>
+    <% if current_user == course.user %>
+      <%= link_to 'Edit', edit_course_path(course), class: "btn btn-link" %>
+      <%= link_to 'Delete', course_path(course),
+            method: :delete,
+            data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+    <% end %>
+  </div>
+
+
+<% end %>
+
