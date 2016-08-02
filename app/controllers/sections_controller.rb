@@ -1,9 +1,17 @@
 class SectionsController < ApplicationController
 
+
+  def show
+    @course = Course.find(params[:course_id])
+    @section = @course.find(params[:id])
+    @lecture = @section.new
+  end
+
   def new
     @course = Course.find(params[:course_id])
     @section = @course.sections.new
   end
+
 
   def edit
     @course = Course.find(params[:course_id])

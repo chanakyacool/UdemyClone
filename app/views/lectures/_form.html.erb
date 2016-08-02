@@ -1,0 +1,14 @@
+<%= form_for [@course, @section, @lecture] do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :youtube_url %><br>
+    <%= f.text_field :youtube_url %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,14 @@
+<% @course.sections.lectures.each do |lecture| %>
+
+    <strong>Section: </strong>
+    <%= lecture.title %>
+    <%= lecture.youtube_url %>
+
+
+
+  <p>
+    <%#= link_to 'Delete', [section.title, @course],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
