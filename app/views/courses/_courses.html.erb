@@ -6,7 +6,7 @@
     <%#= course.description %>
     <%= link_to 'View Details', course_path(course), class: "btn btn-link" %>
     <% if current_user == course.user %>
-      <%= link_to 'Edit', edit_course_path(course), class: "btn btn-link" %>
+      <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-link" %>
       <%= link_to 'Delete', course_path(course),
             method: :delete,
             data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
