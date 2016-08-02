@@ -1,0 +1,12 @@
+<% @course.sections.each do |section| %>
+  <p>
+    <strong>Section: </strong>
+    <%= section.title %>
+  </p>
+
+  <p>
+    <%#= link_to 'Delete', [section.title, section],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
