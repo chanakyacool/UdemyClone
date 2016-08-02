@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+
   resources :courses
 
   authenticated do
-    root 'courses#index'
+    root 'dashboard#index'
   end
 
   unauthenticated do
