@@ -4,13 +4,13 @@
     <%= section.title %>
   </p>
 
-  <%# if @course.user = current_user %>
-    <%#= link_to 'Create Lecture', new_course_section_lecture_path(@section), class: "btn btn-default" %>
-  <%# end %>
+  <% if @course.user == current_user %>
+    <%= link_to 'Create Lecture', new_course_section_lecture_path(@course,section), class: "btn btn-default" %>
+  <% end %>
 
-  <p>
+
     <%#= link_to 'Delete', [section.title, @course],
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
-  </p>
+  <%#= render 'lectures/lectures' %>
 <% end %>

@@ -3,13 +3,13 @@ class SectionsController < ApplicationController
 
   def show
     @course = Course.find(params[:course_id])
-    @section = @course.find(params[:id])
-    @lecture = @section.new
+    @section = Section.find(params[:id])
+
   end
 
   def new
     @course = Course.find(params[:course_id])
-    @section = @course.sections.new
+    @section = @course.sections.build
   end
 
 
@@ -21,7 +21,7 @@ class SectionsController < ApplicationController
 
   def create
     @course = Course.find(params[:course_id])
-    @section = @course.sections.new section_params
+    @section = @course.sections.create(section_params)
     #@section.user = current_user
     @section.save
     redirect_to course_path(@course), notice: "Your section was successful."
