@@ -15,7 +15,7 @@
   <% end %>
 
   <p>
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </p>
 
@@ -39,6 +39,7 @@
   </p>
 
   <p>
+  <%= link_to 'Cancel', courses_path, class: "btn btn-link" %>
     <%= f.submit %>
   </p>
 

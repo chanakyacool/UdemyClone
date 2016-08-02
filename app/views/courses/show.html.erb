@@ -14,7 +14,7 @@
   <%= @course.description %>
 </p>
 <% if current_user == @course.user %>
-  <%= link_to 'Edit', edit_course_path(@course) %>
+  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-link" %>
 <% end %>
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', courses_path, class: "btn btn-link" %>
 

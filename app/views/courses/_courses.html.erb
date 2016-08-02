@@ -9,12 +9,12 @@
       <td><%= image_tag course.image_url(:thumb).to_s %></td>
       <td><%= course.title %></td>
       <td><%= course.description %></td>
-      <td><%= link_to 'Show', course_path(course) %></td>
+      <td><%= link_to 'Show', course_path(course), class: "btn btn-link" %></td>
       <% if current_user == course.user %>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Edit', edit_course_path(course), class: "btn btn-link" %></td>
         <td><%= link_to 'Destroy', course_path(course),
                 method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
+                data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
       <% end %>
     </tr>
   <% end %>
