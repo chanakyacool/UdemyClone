@@ -8,9 +8,16 @@
     <%= link_to 'Create Lecture', new_course_section_lecture_path(@course,section), class: "btn btn-default" %>
   <% end %>
 
+  <%#= render 'lectures/lectures' %>
+
+  <% section.lectures.each do |lecture| %>
+    <em>Lecture: </em>
+    <%= lecture.title %><br />
+  <% end %>
+
 
     <%#= link_to 'Delete', [section.title, @course],
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
-  <%= render 'lectures/lectures' %>
+
 <% end %>
