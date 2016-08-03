@@ -7,6 +7,12 @@ class LecturesController < ApplicationController
     @lecture = @section.lectures.build
   end
 
+  def edit
+    @course = Course.find(params[:course_id])
+    @section = Section.find(params[:section_id])
+    @lecture = @section.lectures.find(params[:id])
+  end
+
   def create
     @course = Course.find(params[:course_id])
     @section = Section.find(params[:section_id])
@@ -16,6 +22,18 @@ class LecturesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def update
+    @course = Course.find(params[:course_id])
+    @section = Section.find(params[:section_id])
+    @lecture = @section.lectures.find(params[:id])
+    #if current_user == @course.user
+      @lecture.update(lecture_params)
+      redirect_to @course
+    #else
+     # render 'edit'
+    #end
   end
 
   private
