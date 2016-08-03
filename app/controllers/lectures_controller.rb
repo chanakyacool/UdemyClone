@@ -36,6 +36,16 @@ class LecturesController < ApplicationController
     end
   end
 
+  def destroy
+    @course = Course.find(params[:course_id])
+    @section = Section.find(params[:section_id])
+    @lecture = @section.lectures.find(params[:id])
+    #if current_user == @section.user
+      @lecture.destroy
+      redirect_to @course
+    #end
+  end
+
   private
   def lecture_params
     params.require(:lecture).permit(:title, :youtube_url)
