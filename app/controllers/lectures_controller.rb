@@ -10,7 +10,7 @@ class LecturesController < ApplicationController
   def create
     @course = Course.find(params[:course_id])
     @section = Section.find(params[:section_id])
-    @lecture = @section.lectures.create(lecture_params)
+    @lecture = @section.lectures.build(lecture_params)
     if @lecture.save
       redirect_to course_path(@course), notice: "Your lecture creation was successful."
     else
