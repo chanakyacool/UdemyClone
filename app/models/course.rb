@@ -5,7 +5,7 @@ class Course < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  has_many :sections
+  has_many :sections, dependent: :destroy
   #has_many :lectures, through: :sections
 
 

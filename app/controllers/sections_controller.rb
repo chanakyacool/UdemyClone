@@ -36,7 +36,7 @@ class SectionsController < ApplicationController
     @section = @course.sections.find(params[:id])
     #if current_user == @section.user
       @section.destroy
-      redirect_to course_path(@course)
+      redirect_to @course
     #end
   end
 
