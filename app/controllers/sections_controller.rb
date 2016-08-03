@@ -6,7 +6,6 @@ class SectionsController < ApplicationController
     @section = @course.sections.new
   end
 
-
   def edit
     @course = Course.find(params[:course_id])
     @section = @course.sections.find(params[:id])
@@ -26,7 +25,7 @@ class SectionsController < ApplicationController
     @section = @course.sections.find(params[:id])
 
     if @section.update(section_params)
-      redirect_to course_path(@course)
+      redirect_to @course
     else
       render 'edit'
     end
