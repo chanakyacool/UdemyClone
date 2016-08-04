@@ -6,6 +6,7 @@
 
 
   <% if @course.user = current_user %>
+  <%# if @course.user.id == current_user.id %>
     <%=@course.user.inspect%>
       <%= link_to 'Edit', edit_course_section_path(@course, section), class: "btn btn-link" %>
       <%= link_to 'Delete', [@course, section],
@@ -21,6 +22,7 @@
     <%= lecture.title %>
 
     <% if @course.user = current_user %>
+    <%# if @course.user.id == current_user.id %>
       <%= link_to 'Edit', edit_course_section_lecture_path(@course, section, lecture), class: "btn btn-link" %>
       <%= link_to 'Delete', [@course, section, lecture],
                  method: :delete,

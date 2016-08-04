@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @section = Section.find(params[:id])
+    @sections = @course.sections.all
 
   end
 
