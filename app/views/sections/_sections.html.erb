@@ -1,29 +1,33 @@
+
 <% @course.sections.each do |section| %>
 
     <strong>Section: </strong>
     <%= section.title %>
 
 
-  <% if current_user == @course.user %>
-
-    <%= link_to 'Edit', edit_course_section_path(@course, section), class: "btn btn-link" %>
-    <%= link_to 'Delete', [@course, section],
+  <% if @course.user = current_user %>
+    <%=@course.user.inspect%>
+      <%= link_to 'Edit', edit_course_section_path(@course, section), class: "btn btn-link" %>
+      <%= link_to 'Delete', [@course, section],
                  method: :delete,
                  data: { confirm: 'Are you sure?', class: "btn btn-link" }%>
-
-  <br />
-  <%= link_to 'Create Lecture', new_course_section_lecture_path(@course,section), class: "btn btn-link" %> <br />
+      <br />
+      <%= link_to 'Create Lecture', new_course_section_lecture_path(@course,section), class: "btn btn-default" %> <br />
 
   <% end %>
+
   <% section.lectures.each do |lecture| %>
     <em>Lecture: </em>
     <%= lecture.title %>
 
-    <%= link_to 'Edit', edit_course_section_lecture_path(@course, section, lecture), class: "btn btn-link" %>
-    <%= link_to 'Delete', [@course, section, lecture],
+    <% if @course.user = current_user %>
+      <%= link_to 'Edit', edit_course_section_lecture_path(@course, section, lecture), class: "btn btn-link" %>
+      <%= link_to 'Delete', [@course, section, lecture],
                  method: :delete,
                  data: { confirm: 'Are you sure?', class: "btn btn-link" }
                   %>
+    <br />
+    <% end %>
     <br />
   <% end %>
 
