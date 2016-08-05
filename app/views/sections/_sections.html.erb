@@ -4,25 +4,25 @@
     <strong>Section: </strong>
     <%= section.title %>
 
+    <%#= @course.user.inspect%>
+    <%#= current_user.inspect%>
+    <% if current_user == @course.user %>
+      <%#=@course.user.inspect%>
+        <%= link_to 'Edit', edit_course_section_path(@course, section), class: "btn btn-link" %>
+        <%= link_to 'Delete', [@course, section],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?', class: "btn btn-link" }%> <br />
+        <%= link_to 'Create Lecture', new_course_section_lecture_path(@course, section), class: "btn btn-default" %> <br />
+        <br />
 
-  <% if @course.user = current_user %>
-  <%# if @course.user.id == current_user.id %>
-    <%=@course.user.inspect%>
-      <%= link_to 'Edit', edit_course_section_path(@course, section), class: "btn btn-link" %>
-      <%= link_to 'Delete', [@course, section],
-                 method: :delete,
-                 data: { confirm: 'Are you sure?', class: "btn btn-link" }%>
-      <br />
-      <%= link_to 'Create Lecture', new_course_section_lecture_path(@course,section), class: "btn btn-default" %> <br />
 
-  <% end %>
+    <% end %>
 
   <% section.lectures.each do |lecture| %>
     <em>Lecture: </em>
     <%= lecture.title %>
 
-    <% if @course.user = current_user %>
-    <%# if @course.user.id == current_user.id %>
+    <% if current_user == @course.user %>
       <%= link_to 'Edit', edit_course_section_lecture_path(@course, section, lecture), class: "btn btn-link" %>
       <%= link_to 'Delete', [@course, section, lecture],
                  method: :delete,
@@ -30,6 +30,7 @@
                   %>
     <br />
     <% end %>
+
     <br />
   <% end %>
 
