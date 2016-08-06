@@ -1,14 +1,15 @@
-<% section.lectures.each do |lecture| %>
-
+<% @section.lectures.each do |lecture| %>
     <em>Lecture: </em>
     <%= lecture.title %>
-    <%#= lecture.youtube_url %>
 
-
-
-
-    <%#= link_to 'Delete', [section.title, @course],
+    <% if current_user == @course.user %>
+      <%= link_to 'Edit', edit_course_section_lecture_path(@course, @section, lecture), class: "btn btn-link" %>
+      <%= link_to 'Delete', [@course, @section, lecture],
                  method: :delete,
-                 data: { confirm: 'Are you sure?' } %>
+                 data: { confirm: 'Are you sure?', class: "btn btn-link" }
+                  %>
+    <br />
+    <% end %>
 
-<% end %>
+    <br />
+  <% end %>

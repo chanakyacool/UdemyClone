@@ -4,10 +4,8 @@
     <strong>Section: </strong>
     <%= section.title %>
 
-    <%#= @course.user.inspect%>
-    <%#= current_user.inspect%>
     <% if current_user == @course.user %>
-      <%#=@course.user.inspect%>
+
         <%= link_to 'Edit', edit_course_section_path(@course, section), class: "btn btn-link" %>
         <%= link_to 'Delete', [@course, section],
                    method: :delete,
@@ -18,6 +16,7 @@
 
     <% end %>
 
+  <%#= render 'lectures/lectures' %>
   <% section.lectures.each do |lecture| %>
     <em>Lecture: </em>
     <%= lecture.title %>
@@ -33,7 +32,5 @@
 
     <br />
   <% end %>
-
-
 
 <% end %>
