@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_job, only: [:show, :edit, :update, :destroy]
 
   def index
     @courses = Course.all
@@ -52,6 +53,10 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course)
       .permit(:title, :description, :image, :remote_image_url, :youtube_url)
+  end
+
+  def find_course
+    @course = Course.find(params[:id])
   end
 
 end

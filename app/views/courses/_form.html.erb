@@ -1,4 +1,4 @@
-<%= form_for @course, html: {multipart: true} do |f| %>
+<%= simple_form_for( @course, html: {multipart: true} ) do |f| %>
 
   <% if @course.errors.any? %>
     <div id="error_explanation">
@@ -13,6 +13,7 @@
       </ul>
     </div>
   <% end %>
+
 
   <p>
     <%= f.label :title %>
@@ -37,6 +38,11 @@
     <%= f.label :youtube_url %><br>
     <%= f.text_field :youtube_url %>
   </p>
+
+  <%= f.input :category, {collection: Category.all, prompt:"Select Category" } %>
+  <%= f.input :sub_category, :label_html => { :class => 'subcategory_label_class' } do %>
+    <%= f.grouped_collection_select :sub_category_id, Category.order(:name), :sub_categories, :name, :id, :name, include_blank: true %>
+  <% end %>
 
   <p>
   <%= link_to 'Cancel', courses_path, class: "btn btn-link" %>
