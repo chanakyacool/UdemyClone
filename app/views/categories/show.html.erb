@@ -1,0 +1,9 @@
+show
+<p>
+  <strong>Category:</strong>
+  <%= @category.name %>
+</p> <br />
+<%= link_to 'Create Sub-Category', new_category_sub_category_path(@category), class: "btn btn-default" %> <br />
+
+<%= render 'sub_categories/list' %>
+

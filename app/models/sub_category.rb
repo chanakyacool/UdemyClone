@@ -1,3 +1,3 @@
 class SubCategory < ApplicationRecord
-  has_many :courses, dependant: :destroy
+  has_many :courses, dependent: :destroy
 end
