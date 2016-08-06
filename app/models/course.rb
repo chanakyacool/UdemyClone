@@ -1,5 +1,7 @@
 class Course < ApplicationRecord
   belongs_to :user
+  belongs_to :categories
+  belongs_to :sub_categories
   validates :title, presence: true,
                     length: { minimum: 6 }
 
