@@ -1,13 +1,13 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_job, only: [:show, :edit, :update, :destroy]
+  before_action :find_course, only: [:show, :edit, :update, :destroy]
 
   def index
     @courses = Course.all
   end
 
   def show
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
   end
 
   def new
@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
   end
 
   def create
@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
     if current_user == @course.user
       @course.update(course_params)
       redirect_to @course
@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
     if current_user == @course.user
       @course.destroy
     end
