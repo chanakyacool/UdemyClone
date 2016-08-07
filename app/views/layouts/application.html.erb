@@ -9,13 +9,15 @@
   <body>
     <%= render 'layouts/navbar' %>
     <div class="container" >
-      <% if flash.count > 0 %>
-        <div class="well well-sm">
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, id: "flash_#{name}" %>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="row" >
+        <% if flash.count > 0 %>
+          <div class="well well-sm">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, id: "flash_#{name}" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>
