@@ -14,6 +14,13 @@
     </div>
   <% end %>
 
+  <p>
+    <label>Category <span>*</span></label>
+    <%= f.select(:category_id,Category.all.collect{|d| [d.name,d.id]}, {:include_blank => 'Select a Category'}, :id => "category_id") %>
+    <br />
+    <label>SubCategory<span>*</span></label>
+    <%= f.select(:sub_category_id,  "" , {:include_blank => 'Select a Category first'}, :id => "sub_category_id") %>
+  </p>
 
   <p>
     <%= f.label :title %>
@@ -40,14 +47,6 @@
   </p>
 
 
-  <p>
-    <label>Category <span>*</span></label>
-    <%= f.select(:category_id,Category.all.collect{|d| [d.name,d.id]}, {:include_blank => 'Select a Category'}, :id => "category_id") %>
-  </p>
-  <p>
-    <label>SubCategory<span>*</span></label>
-    <%= f.select(:sub_category_id,  "" , {:include_blank => 'Select a Category first'}, :id => "sub_category_id") %>
-  </p>
 
   <p>
   <%= link_to 'Cancel', courses_path, class: "btn btn-link" %>
