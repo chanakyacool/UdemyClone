@@ -52,7 +52,7 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course)
-      .permit(:title, :description, :image, :remote_image_url, :youtube_url)
+      .permit(:title, :description, :image, :remote_image_url, :youtube_url, :category_id, :sub_category_id)
   end
 
   def find_course

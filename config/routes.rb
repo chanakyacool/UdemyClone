@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
+  
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
-
   resources :courses do
     resources :sections do
       resources :lectures
     end
   end
-
+  get "categories/get_subcategories"  
   resources :categories do
     resources :sub_categories
   end

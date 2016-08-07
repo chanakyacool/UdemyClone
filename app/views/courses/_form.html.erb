@@ -13,20 +13,9 @@
       </ul>
     </div>
   <% end %>
-  <div class = "field">
-  <%= f.label :category_id %>
-  <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_black: true %>
-  </div>
 
-  <div class = "field">
-  <%= f.label :sub_category_id %>
-  <%= f.grouped_collection_select :sub_category_id, Category.order(:name), :sub_categories, :name, :id, :name, include_black: true %>
-  </div>
-
-  <br />
 
   <p>
-    <br />
     <%= f.label :title %>
     <%= f.text_field :title %>
   </p>
@@ -50,10 +39,15 @@
     <%= f.text_field :youtube_url %>
   </p>
 
-  <%#= f.input :category, {collection: Category.all, prompt:"Select Category" } %>
-  <%#= f.input :sub_category, :label_html => { :class => 'subcategory_label_class' } do %>
-    <%#= f.grouped_collection_select :sub_category_id, Category.order(:name), :sub_categories, :name, :id, :name, include_blank: true %>
-  <%# end %>
+
+  <p>
+    <label>Category <span>*</span></label>
+    <%= f.select(:category_id,Category.all.collect{|d| [d.name,d.id]}, {:include_blank => 'Select a Category'}, :id => "category_id") %>
+  </p>
+  <p>
+    <label>SubCategory<span>*</span></label>
+    <%= f.select(:sub_category_id,  "" , {:include_blank => 'Select a Category first'}, :id => "sub_category_id") %>
+  </p>
 
   <p>
   <%= link_to 'Cancel', courses_path, class: "btn btn-link" %>
@@ -61,3 +55,4 @@
   </p>
 
 <% end %>
+
