@@ -33,8 +33,13 @@ class CategoriesController < ApplicationController
     @category.destroy
     redirect_to categories_path
   end
-
-
+  
+  def get_subcategories
+    @data_category_id = params[:category_id]
+    @data_subcategory_id = SubCategory.where(:category_id => @data_category_id).all
+    render :json => @data_subcategory_id.map{|c| [c.id, c.name]}
+  end
+  
   private
   def category_params
     params.require(:category).permit(:name)

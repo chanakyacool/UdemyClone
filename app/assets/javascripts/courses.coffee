@@ -1,14 +1,21 @@
-jQuery ->
-
-$('#course_sub_category_id').parent().hide()
- sub_categories = $('#course_sub_category_id').html()
- $('#course_category_id').change ->
-  category = $('#course_category_id :selected').text()
-  escaped_category = category.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
-  options = $(sub_categories).filter("optgroup[label='#{escaped_category}']").html()
-  if options
-   $('#course_sub_category_id').html(options)
-   $('#course_sub_category_id').parent().show()
-  else
-   $('#course_subcategory_id').empty()
-   $('#course_sub_category_id').parent().hide()
+$(document).ready ->
+  $('#category_id').change ->
+    if $(this).val() == ''
+      $('#sub_category_id').html $('<option>No sub category provided for your category</option>')
+    else
+      $.ajax
+        type: 'GET'
+        url: '/categories/get_subcategories/' + '?category_id=' + $(this).val()
+        success: (data) ->
+          if data.content == 'None'
+            $('#sub_category_id').empty()
+            $('#sub_category_id').append $('<option>No sub category provided for your category</option>')
+          else
+            $('#sub_category_id').empty()
+            $('#sub_category_id').append $('<option>Select your Sub Category</option>')
+            jQuery.each data, (i, v) ->
+              $('#sub_category_id').append $('<option value="' + data[i][0] + '">' + data[i][1] + '</option>')
+              return
+          return
+    return
+  return
