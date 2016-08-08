@@ -46,7 +46,18 @@
     <%= f.text_field :youtube_url %>
   </p>
 
+  <p>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
 
+    <%= f.label :sale_price %>
+    <%= f.text_field :sale_price %>
+  </p>
+
+  <p>
+    <%= f.label "Private" %> <br />
+    <%= f.check_box :is_private %> <br />
+  </p>
 
   <p>
   <%= link_to 'Cancel', courses_path, class: "btn btn-link" %>
